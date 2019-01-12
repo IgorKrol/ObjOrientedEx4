@@ -90,7 +90,15 @@ public class Map{
 		return new Point2D(distance, angel);
 		
 	}
-	
+	/**
+	 * Calc angle between 2 points
+	 * @param mPacman = source
+	 * @param mouseClick = destination
+	 * @return
+	 */
+	public double angle(Point2D mPacman, Point2D mouseClick) {
+		return Math.toDegrees(Math.atan2(mouseClick.x() - mPacman.x(),  mPacman.y() - mouseClick.y()));
+	}
 	public File getFile() {
 		return mapFile;
 	}

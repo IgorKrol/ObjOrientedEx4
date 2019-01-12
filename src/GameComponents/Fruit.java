@@ -14,7 +14,9 @@ public class Fruit extends Figure {
 	public void setEaten(boolean eaten) {
 		this.eaten = eaten;
 	}
-
+	public Fruit(Point3D p) {
+		super(p);
+	}
 	public Fruit(Point3D p, int id, double w) {
 		super(p, id);
 		weight = w;

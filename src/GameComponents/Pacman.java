@@ -12,6 +12,14 @@ public class Pacman extends Figure{
 	private double orientation = 0;
 	private Path path;
 	
+	/**
+	 * Ex4 initializer for pacman
+	 * @param p
+	 */
+	public Pacman(Point3D p) {
+		super(p);
+	}
+	
 	public Pacman(Point3D p, int id, double speed, double radius) {
 		super(p, id);
 		this.speed = speed;

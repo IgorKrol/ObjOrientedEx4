@@ -353,15 +353,15 @@ public class MyFrame extends JFrame implements MouseListener, MouseMotionListene
 			}
 		}
 	};
-
-
-	public static void main(String[] args) {
-		MyFrame mainGameFrame = new MyFrame();
-		mainGameFrame.setSize(d);
-		mainGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainGameFrame.setVisible(true);
-
-	}
+//
+//
+//	public static void main(String[] args) {
+//		Ex4GameFrame mainGameFrame = new Ex4GameFrame();
+//		mainGameFrame.setSize(d);
+//		mainGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		mainGameFrame.setVisible(true);
+//
+//	}
 
 	///////////////////////////////////////////////////////////////////////////
 	@Override

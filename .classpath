@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/מטלות/מונחה עצמים/Ex4_OOP/Ex4_v0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/מטלות/מונחה עצמים/Ex4_OOP/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="F:/eWorkSpace/eProj/Ex4ObjOriented/data/Ex4_v0.2.jar"/>
+	<classpathentry kind="lib" path="F:/eWorkSpace/eProj/Ex4ObjOriented/data/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

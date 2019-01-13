@@ -8,7 +8,7 @@ import Geom.Point3D;
 import Robot.Play;
 /**
  * this class responsible for analyzing data from 'Play' and contain all data in objects to use
- * @author igork
+ * 
  *
  */
 public class Meta_Data_Analyze {

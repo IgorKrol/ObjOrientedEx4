@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Algo.Ex4Algo;
+import DataBase.db;
 import File_format.Path2KML;
 import GUI.MyFrame.JPanelBG;
 import GameComponents.Game;
@@ -28,7 +29,11 @@ import Geom.Point2D;
 import Geom.Point3D;
 import Resourses.Map;
 import Robot.Play;
-
+/**
+ * Main GUI class.
+ * 
+ *
+ */
 public class Ex4GameFrame extends JFrame implements MouseListener {
 	Map m;
 	Point2D mouseClick;
@@ -111,7 +116,15 @@ public class Ex4GameFrame extends JFrame implements MouseListener {
 							Ex4Algo algo = new Ex4Algo(mda, _panel.frameSizePixels);
 							algo.setFSize(_panel.frameSizePixels);
 							_panel.setAngle(algo.WhereToMove());
+							System.out.println(ex4Game.getStatistics());
+							try {
+								sleep(100);
+							}catch (Exception e) {
+								// TODO: handle exception
+							}
 						}
+				    	db dataBase = new db();
+				    	dataBase.CompareToAll();
 				    }
 				}.start();
 				

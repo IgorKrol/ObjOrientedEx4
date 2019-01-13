@@ -21,7 +21,11 @@ import Geom.Point3D;
 import Resourses.FigureForPaint;
 import Resourses.Map;
 import Robot.Play;
-
+/**
+ * JPanel with image back ground, can paint game.
+ * 
+ *
+ */
 public class JPanelWithBG extends JPanel {
 	Ex4GameFrame mFrame;
 	Map m;
@@ -37,7 +41,7 @@ public class JPanelWithBG extends JPanel {
 	File mapFile;
 	Point2D mPacman;
 	double angle;
-	
+
 	public void setPlay(Play game) {
 		ex4Game = game;
 	}
@@ -53,7 +57,7 @@ public class JPanelWithBG extends JPanel {
 	public JPanelWithBG(Ex4GameFrame mainFrame){
 		mFrame = mainFrame;
 		m = new Map();
-//		ex4Game = game;
+		//		ex4Game = game;
 		Dimension d = new Dimension(1433, 642);
 		this.setPreferredSize(d);
 		try {
@@ -61,7 +65,7 @@ public class JPanelWithBG extends JPanel {
 
 			mapFile = m.getFile();
 			mapImage = ImageIO.read(mapFile);
-//			System.out.println("GotImage");
+			//			System.out.println("GotImage");
 		} 
 		catch (Exception e) {
 			System.err.println("ImageIO: Cant load image");
@@ -81,17 +85,17 @@ public class JPanelWithBG extends JPanel {
 		if (shouldDrawFigures) {
 			paintBoard(g);
 		}
-				if (shouldPlay) {
-				ex4Game.rotate(angle);
-				if (!ex4Game.isRuning()) shouldPlay = false;
-			}
+		if (shouldPlay) {
+			ex4Game.rotate(angle);
+			if (!ex4Game.isRuning()) shouldPlay = false;
+		}
 		repaint();
 	}
 	public void paintBoard(Graphics g) {
 		ArrayList<String> board_data = ex4Game.getBoard();
-		//			for(int i=0;i<board_data.size();i++) {
-		//				System.out.println(board_data.get(i));
-		//			}
+//		for(int i=0;i<board_data.size();i++) {
+//			System.out.println(board_data.get(i));
+//		}
 		for(int i=0;i<board_data.size();i++) {
 			FigureForPaint fig = new FigureForPaint(board_data.get(i));
 			if (fig.type() == 'B') {

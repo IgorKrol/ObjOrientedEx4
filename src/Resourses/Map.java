@@ -5,7 +5,9 @@ import java.io.File;
 import Geom.Point2D;
 import Geom.Point3D;
 /**
- * 
+ * Map class:
+ * methods: CoordsToPixel, PixelToCoords, PixelDistanceInMeters, angle
+ * contains map data/file.
  * @author Igor_Krol & Amit_Kazado
  *
  */

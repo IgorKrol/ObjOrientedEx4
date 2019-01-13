@@ -21,8 +21,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Algo.Ex4Algo;
 import DataBase.DataBase;
-import File_format.Path2KML;
-import GUI.MyFrame.JPanelBG;
 import GameComponents.Game;
 import GameComponents.Meta_Data_Analyze;
 import Geom.Point2D;

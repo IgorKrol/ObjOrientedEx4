@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Algo.Ex4Algo;
-import DataBase.db;
+import DataBase.DataBase;
 import File_format.Path2KML;
 import GUI.MyFrame.JPanelBG;
 import GameComponents.Game;
@@ -94,9 +94,20 @@ public class Ex4GameFrame extends JFrame implements MouseListener {
 		runGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//start game
 				ex4Game.start();
+				//start paint
 				_panel.setShouldPlay(true);
-//				System.out.println("Start?");
+				//Thread waiting for game to finish, than call database compare.
+				new Thread() {
+					public void run() {
+						while (ex4Game.isRuning()) {
+							
+						}
+						DataBase dataBase = new DataBase();
+				    	dataBase.CompareToAll();
+					}
+				}.start();
 
 			}
 		});
@@ -106,8 +117,10 @@ public class Ex4GameFrame extends JFrame implements MouseListener {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//start game and paint
 				ex4Game.start();
 				_panel.setShouldPlay(true);
+				//Thread to play automatic, using Ex4Algo
 				new Thread()
 				{
 				    public void run() {
@@ -123,7 +136,7 @@ public class Ex4GameFrame extends JFrame implements MouseListener {
 								// TODO: handle exception
 							}
 						}
-				    	db dataBase = new db();
+				    	DataBase dataBase = new DataBase();
 				    	dataBase.CompareToAll();
 				    }
 				}.start();

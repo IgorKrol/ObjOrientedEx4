@@ -6,10 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class db {
+public class DataBase {
 	    /**
-	     * connect to the game DataBase and compare the last game we played to other game we played on the same map
-	     * and to other game played by the entire class
+	     * connect to the game DataBase
+	     * compare the last game played to other games played on the same map
+	     * compare to other games played by class
 	     */
 	    public static void CompareToAll()
 	    {
@@ -22,32 +23,31 @@ public class db {
 	            Connection connection = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
 	            Statement statement = connection.createStatement();
 
-	            String allCustomersQuery = "SELECT * FROM logs where FirstID = 323230102 and SecondID = 302499652;";
-	            ResultSet resultSet = statement.executeQuery(allCustomersQuery);
-	            resultSet.last(); // we take the last game we played and extract the points and the gameID
-	            double LastGameScore = resultSet.getDouble("Point");
-	            double GameID = resultSet.getDouble("SomeDouble");
+	            String Query = "SELECT * FROM logs where FirstID = 323230102 and SecondID = 302499652;";
+	            ResultSet resultSet = statement.executeQuery(Query);
+	            resultSet.last(); // select last game
+	            double LastGameScore = resultSet.getDouble("Point"); //get last game score
+	            double GameID = resultSet.getDouble("SomeDouble");	//get last game ID
 
-	            allCustomersQuery = "SELECT * FROM logs where FirstID = 323230102 and SecondID = 302499652 and SomeDouble = "
-	                                       + GameID + " ORDER BY point DESC;"; // we take all the games we played on the same GameID
-	            resultSet = statement.executeQuery(allCustomersQuery);
-	            int i = 1;
-	            //we check how are last game compare to other games we played
+	            Query = "SELECT * FROM logs where FirstID = 323230102 and SecondID = 302499652 and SomeDouble = "
+	                                       + GameID + " ORDER BY point DESC;"; 
+	            resultSet = statement.executeQuery(Query);	// get all games with same ID
+	            int i = 1;	//counter
 	            while (resultSet.next())
 	            {
-	                if(resultSet.getDouble("Point") > LastGameScore)
+	                if(resultSet.getDouble("Point") > LastGameScore)	//count how many got higher score
 	                    i++;
 	                else
-	                    break;
+	                    break;	//everyone else are lower.
 	            }
 
-	            System.out.println("In the Last Game We reach the " + i + " place compere the other game we played in Game number " + GetGameNumByID(GameID));
+	            System.out.println("Last game rank:" + i + " compare to our games in game number: " + GetGameNumByID(GameID));
 
-	            allCustomersQuery = "SELECT * FROM logs where SomeDouble = " + GameID + " ORDER BY point DESC;"; // we take all the games the class played on the same gameID
-	            resultSet = statement.executeQuery(allCustomersQuery);
+	            Query = "SELECT * FROM logs where SomeDouble = " + GameID + " ORDER BY point DESC;"; 
+	            resultSet = statement.executeQuery(Query);	// get all games played by class in GameID
 	            i = 1;
-	            //we check how our last game compare to the other games the class played on the same GameID
-	            while (resultSet.next())
+	            
+	            while (resultSet.next())	//count how many got higher score
 	            {
 	                if(resultSet.getDouble("Point") > LastGameScore)
 	                    i++;
@@ -55,7 +55,7 @@ public class db {
 	                    break;
 	            }
 
-	            System.out.println("In the Last Game We reach the " + i + " place compere the other game the entire class played in Game number " + GetGameNumByID(GameID));
+	            System.out.println("Last game rank:" + i + " compare to all games in game number: " + GetGameNumByID(GameID));
 
 
 	            resultSet.close();
